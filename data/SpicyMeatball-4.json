@@ -1,0 +1,8 @@
+{
+  "contest": 413,
+  "handle": "SpicyMeatball",
+  "risk": "2",
+  "title": "Incorrect unwrapNativeTokenInWallet receiver address",
+  "issueId": 4,
+  "issueUrl": "https://github.com/code-423n4/2024-07-benddao-findings/issues/4"
+}
