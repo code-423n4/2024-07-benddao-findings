@@ -1,0 +1,8 @@
+{
+  "contest": 413,
+  "handle": "SpicyMeatball",
+  "risk": "2",
+  "title": "Wrong yield account will be used if bot unstakes or repays the yield loan ",
+  "issueId": 6,
+  "issueUrl": "https://github.com/code-423n4/2024-07-benddao-findings/issues/6"
+}
