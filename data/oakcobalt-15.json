@@ -1,0 +1,8 @@
+{
+  "contest": 413,
+  "handle": "oakcobalt",
+  "risk": "3",
+  "title": "Incorrect index used to calculate totalSupply, which invalidates asset / staker level yield cap checks",
+  "issueId": 15,
+  "issueUrl": "https://github.com/code-423n4/2024-07-benddao-findings/issues/15"
+}
