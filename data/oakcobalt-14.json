@@ -1,0 +1,8 @@
+{
+  "contest": 413,
+  "handle": "oakcobalt",
+  "risk": "3",
+  "title": "Anyone can get the NFT collateral token after an Auction without bidding due to missing check on msg.sender",
+  "issueId": 14,
+  "issueUrl": "https://github.com/code-423n4/2024-07-benddao-findings/issues/14"
+}
