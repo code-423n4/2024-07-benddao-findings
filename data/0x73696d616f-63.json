@@ -1,0 +1,8 @@
+{
+  "contest": 413,
+  "handle": "0x73696d616f",
+  "risk": "3",
+  "title": "DoSed `YieldSavingsDai`  withdrawals due to passing in `DAI` amount to `redeem()`, which accepts shares",
+  "issueId": 63,
+  "issueUrl": "https://github.com/code-423n4/2024-07-benddao-findings/issues/63"
+}
