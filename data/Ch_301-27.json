@@ -1,0 +1,8 @@
+{
+  "contest": 413,
+  "handle": "Ch_301",
+  "risk": "3",
+  "title": "Revert due to underflow error, leading to lock of the liquidated NFT ",
+  "issueId": 27,
+  "issueUrl": "https://github.com/code-423n4/2024-07-benddao-findings/issues/27"
+}
