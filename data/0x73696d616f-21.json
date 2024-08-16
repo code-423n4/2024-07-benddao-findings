@@ -1,0 +1,8 @@
+{
+  "contest": 413,
+  "handle": "0x73696d616f",
+  "risk": "2",
+  "title": "User can hold several collateral assets to decrease liquidation penalties",
+  "issueId": 21,
+  "issueUrl": "https://github.com/code-423n4/2024-07-benddao-findings/issues/21"
+}
