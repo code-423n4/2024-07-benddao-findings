@@ -1,0 +1,8 @@
+{
+  "contest": 413,
+  "handle": "0x73696d616f",
+  "risk": "2",
+  "title": "Unhandled request invalidation by the owner of Etherfi will lead to stuck debt",
+  "issueId": 55,
+  "issueUrl": "https://github.com/code-423n4/2024-07-benddao-findings/issues/55"
+}
