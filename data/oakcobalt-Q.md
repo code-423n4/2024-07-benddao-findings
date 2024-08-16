@@ -296,16 +296,17 @@ In YieldStakingBase.sol, healthFactor is calculated as (totalNftValue + totalYie
   }
 }
 ```
+(https://github.com/code-423n4/2024-07-benddao/blob/117ef61967d4b318fc65170061c9577e674fffa1/src/yield/YieldStakingBase.sol#L691)
 
-The issue is that `totalYieldValue` is not the actual yield/ profit generated from user’s staking. `totalYieldValue` is essentially the receipt token balance (stETH, eETH , sDAI, etc) for the user’s underlying token staking. Its value represents staking + yield. 
+The issue is that `totalYieldValue` is not the actual yield/ profit generated from user’s staking. `totalYieldValue` is essentially [the receipt token balance](https://github.com/code-423n4/2024-07-benddao/blob/117ef61967d4b318fc65170061c9577e674fffa1/src/yield/YieldStakingBase.sol#L651) (stETH, eETH , sDAI, etc) for the user’s underlying token staking. Its value represents staking + yield. 
 
 Because in YieldStakingBase.sol, the user's staked underlying assets come from debt(). `calculateHealthFactor()` essentially counts the user’s debt at both the denominator and numerator, which is incorrect.
 
 A further inspection in the current unit test shows the threshold of healthFactor (`unstakeHeathFactor`) is [set uniformly as 1.05e18](https://github.com/code-423n4/2024-07-benddao/blob/117ef61967d4b318fc65170061c9577e674fffa1/script/InitConfigYield.s.sol#L100). This indicates the correct implementation should be (totalNftValue + yield ) /  totalDebtValue, removing the debt value from the numerator.
 
-Suppose totalNftValue is 1 ether WETH (after liquidation threshold discount), and the user borrowed 0.5 ether WETH and staked 0.5 ether WETH in ether.fi, which means the user initially receives 0.5 ether eETH in their yieldAccount. suppose eETH oracle price is 1ether WETH.
+Suppose totalNftValue is 1 ether WETH (after liquidation threshold discount), and the user borrowed 0.5 ether WETH and staked 0.5 ether WETH in ether.fi, which means the user initially receives 0.5 ether eETH in their yieldAccount. suppose eETH oracle price is 1 ether WETH.
 
-At the time of staking, the current health factor’s implementation will be (1 ether + 0.5 ether) / 0.5 ether → 3. But because no yield has been generated, the expected health factor should be (1 ether + 0 ) / 0.5 ether → 2.
+At the time of staking, the current health factor’s implementation will be (1 ether + 0.5 ether) / 0.5 ether → 3. But because no yield has been generated at this point, the expected health factor should be (1 ether + 0 ) / 0.5 ether → 2.
 
 Recommendations:
 Consider this implementation (totalNFTValue + currentYieldAmount - originalNFTYield) / totalDebValue. This requires storing the original yieldAmount received by the NFT position.
