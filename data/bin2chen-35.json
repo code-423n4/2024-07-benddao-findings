@@ -1,0 +1,8 @@
+{
+  "contest": 413,
+  "handle": "bin2chen",
+  "risk": "2",
+  "title": "executeYieldBorrowERC20() checking yieldCap wrong",
+  "issueId": 35,
+  "issueUrl": "https://github.com/code-423n4/2024-07-benddao-findings/issues/35"
+}
