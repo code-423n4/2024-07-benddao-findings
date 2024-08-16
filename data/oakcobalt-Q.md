@@ -167,5 +167,43 @@ However, in this non-state changing method `viewGetUserCrossLiquidateData()`. bo
 ...
 ```
 (https://github.com/code-423n4/2024-07-benddao/blob/117ef61967d4b318fc65170061c9577e674fffa1/src/libraries/logic/LiquidationLogic.sol#L557)
+
 Recommendations:
 Consider using InterestLogic::[getNormalizedSupplyIncome](https://github.com/code-423n4/2024-07-benddao/blob/117ef61967d4b318fc65170061c9577e674fffa1/src/libraries/logic/InterestLogic.sol#L49) / [getNormalizedBorrowDebt](https://github.com/code-423n4/2024-07-benddao/blob/117ef61967d4b318fc65170061c9577e674fffa1/src/libraries/logic/InterestLogic.sol#L67), to calculate latest indexes. 
+
+### Low-05 `erc721TokenData.lockerAddr` not reset after loan liquidation
+**Instance(1)**
+When an isolate loan is liquidated, a liquidator can immediately receive the ERC721 token or directly supply the acquired ERC721 token. In both cases, the existing ERC721TokenData.lockAddr is not cleared.
+```solidity
+//src/libraries/logic/IsolateLogic.sol
+  function executeIsolateLiquidate(InputTypes.ExecuteIsolateLiquidateParams memory params) internal {
+...
+    // transfer erc721 to bidder
+    if (params.supplyAsCollateral) {
+      VaultLogic.erc721TransferIsolateSupplyOnLiquidate(nftAssetData, params.msgSender, params.nftTokenIds);
+    } else {
+      VaultLogic.erc721DecreaseIsolateSupplyOnLiquidate(nftAssetData, params.nftTokenIds);
+
+      VaultLogic.erc721TransferOutLiquidity(nftAssetData, params.msgSender, params.nftTokenIds);
+    }
+...
+```
+(https://github.com/code-423n4/2024-07-benddao/blob/117ef61967d4b318fc65170061c9577e674fffa1/src/libraries/logic/IsolateLogic.sol#L471-L478)
+
+This is an error because when `ERC721TokenData.lockAddr != address(0)` this means the loan is actively borrowed against (either in isolate loan or a yieldBorrow).
+
+Since the liquidator already acquired the ERC721 token and it's no longer locked in a loan or staking contract. `ERC721TokenData.lockAddr` should be reset to address(0). 
+
+Failing to reset `ERC721TokenData.lockAddr` to address(0) when the loan is deleted, can pose issues for future withdrawal or borrowing that involves the nft token.
+
+For example,
+(1) if the liquidator wishes to use the nft token for restaking (YieldStakingBase::stake), the tx will revert due to [failing vars.nftLockerAddr == address(0) check](https://github.com/code-423n4/2024-07-benddao/blob/117ef61967d4b318fc65170061c9577e674fffa1/src/yield/YieldStakingBase.sol#L227).
+ 
+
+(2) if the liquidator wishes to withdraw the nft token, the tx will revert at ValidateLogic::validateWithdrawERC721, due to [failing vars.nftLockerAddr == address(0) check](https://github.com/code-423n4/2024-07-benddao/blob/117ef61967d4b318fc65170061c9577e674fffa1/src/libraries/logic/ValidateLogic.sol#L171).  
+
+Recommendations:
+In executeIsolateLiquidate(), tokenData.lockAddr to address(0) by `VaultLogic.erc721SetTokenLockerAddr()`.
+
+
+
