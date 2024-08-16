@@ -1,0 +1,8 @@
+{
+  "contest": 413,
+  "handle": "0x73696d616f",
+  "risk": "3",
+  "title": "Major insolvency risk in `LiquidationLogic::executeCrossLiquidateERC721()` due to not setting a maximum liquidation price",
+  "issueId": 22,
+  "issueUrl": "https://github.com/code-423n4/2024-07-benddao-findings/issues/22"
+}
