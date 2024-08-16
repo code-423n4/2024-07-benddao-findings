@@ -1,0 +1,8 @@
+{
+  "contest": 413,
+  "handle": "oakcobalt",
+  "risk": "2",
+  "title": "Risk of mass liquidation after pool/asset pause and unpause, due to borrow interest compounding implemenation",
+  "issueId": 58,
+  "issueUrl": "https://github.com/code-423n4/2024-07-benddao-findings/issues/58"
+}
