@@ -1,0 +1,8 @@
+{
+  "contest": 413,
+  "handle": "Ch_301",
+  "risk": "2",
+  "title": "User are forced to borrow again in order to unlock their NFTs from `IsolateLending.sol`",
+  "issueId": 31,
+  "issueUrl": "https://github.com/code-423n4/2024-07-benddao-findings/issues/31"
+}
