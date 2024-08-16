@@ -1,0 +1,8 @@
+{
+  "contest": 413,
+  "handle": "Ch_301",
+  "risk": "2",
+  "title": "`isolateRedeem()` revert in case Revert-on-zero-value-transfers tokens",
+  "issueId": 30,
+  "issueUrl": "https://github.com/code-423n4/2024-07-benddao-findings/issues/30"
+}
