@@ -1,0 +1,8 @@
+{
+  "contest": 413,
+  "handle": "oakcobalt",
+  "risk": "2",
+  "title": "yieldGroup borrow is mixed with cross borrow when calculating crossBorrow healthFactor, risk of users being unfairly liquidated",
+  "issueId": 17,
+  "issueUrl": "https://github.com/code-423n4/2024-07-benddao-findings/issues/17"
+}
