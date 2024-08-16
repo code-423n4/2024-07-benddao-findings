@@ -1,0 +1,8 @@
+{
+  "contest": 413,
+  "handle": "oakcobalt",
+  "risk": "2",
+  "title": "If an isolated borrower/bidder is blacklisted by the debt token, risk of DOS liquidation / auction of the corresponding loan",
+  "issueId": 56,
+  "issueUrl": "https://github.com/code-423n4/2024-07-benddao-findings/issues/56"
+}
