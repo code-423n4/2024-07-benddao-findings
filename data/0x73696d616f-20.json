@@ -1,0 +1,8 @@
+{
+  "contest": 413,
+  "handle": "0x73696d616f",
+  "risk": "3",
+  "title": "Stolen erc721 collateral to `msg.sender` instead of the bidder in `IsolateLogic::executeIsolateLiquidate()`",
+  "issueId": 20,
+  "issueUrl": "https://github.com/code-423n4/2024-07-benddao-findings/issues/20"
+}
