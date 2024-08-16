@@ -1,0 +1,8 @@
+{
+  "contest": 413,
+  "handle": "oakcobalt",
+  "risk": "2",
+  "title": "unstake / repay will always revert when called by botAdmin, due to implementation error, unstakeFine will be lost",
+  "issueId": 52,
+  "issueUrl": "https://github.com/code-423n4/2024-07-benddao-findings/issues/52"
+}
