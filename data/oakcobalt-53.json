@@ -1,0 +1,8 @@
+{
+  "contest": 413,
+  "handle": "oakcobalt",
+  "risk": "2",
+  "title": "totalUnstakeFine collected will be locked in the staking contract due to no methods of fine transfer",
+  "issueId": 53,
+  "issueUrl": "https://github.com/code-423n4/2024-07-benddao-findings/issues/53"
+}
